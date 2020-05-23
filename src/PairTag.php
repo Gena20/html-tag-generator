@@ -1,23 +1,22 @@
 <?php
 
 
+declare(strict_types=1);
 namespace App;
 
 
 use App\TagInterfaces\IView;
 
 
-class PairTag extends Tag implements IView
+class PairTag extends Tag
 {
     /**
      * @var string
      */
     protected string $content;
 
-    protected function __construct()
-    {
-        $this->attrs[] = 'content';
-    }
+    protected static array $pairAttrs = ['class', 'id', 'hidden', 'title'];
+
 
     /**
      * @return string
@@ -35,12 +34,4 @@ class PairTag extends Tag implements IView
         $this->content = $content;
     }
 
-    /**
-     * @return string
-     */
-    public function getView(): string
-    {
-        $attrs = $this->makeAttrsOutput();
-        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $this->content ?? '', static::TAG_NAME);
-    }
 }

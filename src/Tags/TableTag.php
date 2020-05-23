@@ -1,20 +1,24 @@
 <?php
 
 
+declare(strict_types=1);
 namespace App\Tags;
 
 
 use App\PairTag;
+use App\TagInterfaces\IView;
 use App\TagTraits\AlignAttribute;
 
 
-class TableTag extends PairTag
+class TableTag extends PairTag implements IView
 {
-
     use AlignAttribute;
 
-    protected const TAG_NAME = 'menu';
+    protected const TAG_NAME = 'table';
     protected const ALIGN_TYPE = ['left', 'center', 'right'];
+
+    protected static array $attrs;
+
 
     /**
      * @var string
@@ -55,7 +59,7 @@ class TableTag extends PairTag
      */
     public function __construct($id='', $classes=[])
     {
-        array_merge($this->attrs, ['background', 'bgcolor', 'border', 'cols', 'height', 'width']);
+        self::$attrs = array_merge(self::$pairAttrs,  ['background', 'bgcolor', 'border', 'cols', 'height', 'width']);
         if ($id) $this->setId($id);
         if ($classes) $this->setClass($classes);
     }
@@ -154,5 +158,14 @@ class TableTag extends PairTag
     public function setWidth(int $width): void
     {
         $this->width = $width;
+    }
+
+    /**
+     * @return string
+     */
+    public function getView(): string
+    {
+        $attrs = $this->makeAttrsOutput(static::$attrs);
+        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $this->content ?? '', static::TAG_NAME);
     }
 }

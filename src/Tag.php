@@ -1,18 +1,12 @@
 <?php
 
 
-
 declare(strict_types=1);
 namespace App;
 
 
 abstract class Tag
 {
-    /**
-     * @var array|string[]
-     */
-    protected array $attrs = ['class', 'id', 'hidden', 'title'];
-
     /**
      * @var array|string[]
      */
@@ -31,22 +25,22 @@ abstract class Tag
     /**
      * @var bool
      */
-    protected bool $isHidden;
+    protected bool $hidden;
 
     /**
      * @return bool
      */
     public function isHidden(): bool
     {
-        return $this->isHidden;
+        return $this->hidden;
     }
 
     /**
-     * @param bool $isHidden
+     * @param bool $hidden
      */
-    public function setIsHidden(bool $isHidden): void
+    public function setHidden(bool $hidden): void
     {
-        $this->isHidden = $isHidden;
+        $this->hidden = $hidden;
     }
 
     /**
@@ -110,19 +104,20 @@ abstract class Tag
 
 
     /**
+     * @param array $attrs
      * @return string
      */
-    protected function makeAttrsOutput(): string
+    protected function makeAttrsOutput(array $attrs): string
     {
         $output = [];
         array_map(
             function ($attr) use (&$output) {
-                if (isset($this->$attr)) {
+                if (isset($this->$attr) && $this->$attr) {
                     $outputStr =  is_array($this->$attr) ? implode(' ', $this->$attr) : $this->$attr;
                     $output[] = \sprintf('%s="%s"',$attr, $outputStr);
                 }
             },
-            $this->attrs
+            $attrs
         );
         return implode(' ', $output);
     }

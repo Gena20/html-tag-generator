@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace App\Tags;
 
 use App\PairTag;
+use App\TagInterfaces\IView;
 use App\TagTraits\TypeAttribute;
 
 
-class MenuTag extends PairTag
+class MenuTag extends PairTag implements IView
 {
     use TypeAttribute;
 
     protected const TAG_NAME = 'menu';
     protected const TYPE = ['context', 'toolbar', 'list'];
+
+    protected static array $attrs;
 
 
     /**
@@ -32,7 +35,7 @@ class MenuTag extends PairTag
      */
     public function __construct($id='', $classes=[], $type = '', $label = '')
     {
-        array_merge($this->attrs, ['type', 'label']);
+        self::$attrs = array_merge(self::$pairAttrs, ['type', 'label']);
         if ($id) $this->setId($id);
         if ($classes) $this->setClass($classes);
         if ($type) $this->setType($type);
@@ -55,4 +58,12 @@ class MenuTag extends PairTag
         $this->label = $label;
     }
 
+    /**
+     * @return string
+     */
+    public function getView(): string
+    {
+        $attrs = $this->makeAttrsOutput(static::$attrs);
+        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $this->content ?? '', static::TAG_NAME);
+    }
 }
