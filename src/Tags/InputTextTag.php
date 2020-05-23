@@ -35,8 +35,7 @@ class InputTextTag extends InputTag implements IView
     public function __construct($id='', $classes=[], $value='')
     {
         self::$attrs = array_merge(self::$inputAttrs, ['value', 'maxlength', 'pattern', 'size']);
-        if ($id) $this->setId($id);
-        if ($classes) $this->setClass($classes);
+        parent::__construct($id, $classes);
         if ($value) $this->setValue($value);
         $this->type = "text";
     }

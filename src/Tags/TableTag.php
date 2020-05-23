@@ -60,8 +60,7 @@ class TableTag extends PairTag implements IView
     public function __construct($id='', $classes=[])
     {
         self::$attrs = array_merge(self::$pairAttrs,  ['background', 'bgcolor', 'border', 'cols', 'height', 'width']);
-        if ($id) $this->setId($id);
-        if ($classes) $this->setClass($classes);
+        parent::__construct($id, $classes);
     }
 
     /**

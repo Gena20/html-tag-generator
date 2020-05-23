@@ -46,6 +46,18 @@ class InputTag extends Tag
 
 
     /**
+     * InputTag constructor.
+     * @param string $id
+     * @param array $classes
+     */
+    protected function __construct($id='', $classes=[])
+    {
+        if ($id) $this->setId($id);
+        if ($classes) $this->setClass($classes);
+    }
+
+
+    /**
      * @return string
      */
     public function getName(): string

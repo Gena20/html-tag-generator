@@ -37,8 +37,7 @@ class LITag extends PairTag implements IView
     public function __construct($id='', $classes=[], $type='', $value=1)
     {
         self::$attrs = array_merge(self::$pairAttrs,  ['type', 'value']);
-        if ($id) $this->setId($id);
-        if ($classes) $this->setClass($classes);
+        parent::__construct($id, $classes);
         if ($type) $this->setType($type);
         if ($value) $this->setValue($value);
     }

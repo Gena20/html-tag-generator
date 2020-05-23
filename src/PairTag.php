@@ -17,6 +17,16 @@ class PairTag extends Tag
 
     protected static array $pairAttrs = ['class', 'id', 'hidden', 'title'];
 
+    /**
+     * PairTag constructor.
+     * @param string $id
+     * @param array $classes
+     */
+    protected function __construct($id='', $classes=[])
+    {
+        if ($id) $this->setId($id);
+        if ($classes) $this->setClass($classes);
+    }
 
     /**
      * @return string

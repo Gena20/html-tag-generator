@@ -27,8 +27,7 @@ class ULTag extends PairTag implements IView
     public function __construct($id='', $classes=[])
     {
         self::$attrs = array_merge(self::$pairAttrs,  ['type']);
-        if ($id) $this->setId($id);
-        if ($classes) $this->setClass($classes);
+        parent::__construct($id, $classes);
     }
 
     /**

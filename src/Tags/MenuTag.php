@@ -36,8 +36,7 @@ class MenuTag extends PairTag implements IView
     public function __construct($id='', $classes=[], $type = '', $label = '')
     {
         self::$attrs = array_merge(self::$pairAttrs, ['type', 'label']);
-        if ($id) $this->setId($id);
-        if ($classes) $this->setClass($classes);
+        parent::__construct($id, $classes);
         if ($type) $this->setType($type);
         if ($label) $this->setLabel($label);
     }

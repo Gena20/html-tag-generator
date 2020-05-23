@@ -29,8 +29,7 @@ class InputNumberTag extends InputTag implements IView
     public function __construct($id='', $classes=[], $value=0)
     {
         self::$attrs = array_merge(self::$inputAttrs, ['value', 'max', 'min']);
-        if ($id) $this->setId($id);
-        if ($classes) $this->setClass($classes);
+        parent::__construct($id, $classes);
         if ($value) $this->setValue($value);
         $this->type = "number";
     }
