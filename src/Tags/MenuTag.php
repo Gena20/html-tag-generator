@@ -27,12 +27,16 @@ class MenuTag extends PairTag
      *
      * @param string $id
      * @param array $classes
+     * @param $type
+     * @param $label
      */
-    public function __construct($id='', $classes=[])
+    public function __construct($id='', $classes=[], $type = '', $label = '')
     {
         array_merge($this->attrs, ['type', 'label']);
         if ($id) $this->setId($id);
         if ($classes) $this->setClass($classes);
+        if ($type) $this->setType($type);
+        if ($label) $this->setLabel($label);
     }
 
     /**
