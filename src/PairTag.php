@@ -4,7 +4,10 @@
 namespace App;
 
 
-abstract class PairTag extends Tag
+use App\TagInterfaces\IView;
+
+
+class PairTag extends Tag implements IView
 {
     /**
      * @var string
@@ -30,5 +33,14 @@ abstract class PairTag extends Tag
     public function setContent(string $content): void
     {
         $this->content = $content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getView(): string
+    {
+        $attrs = $this->makeAttrsOutput();
+        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $this->content ?? '', static::TAG_NAME);
     }
 }

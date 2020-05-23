@@ -5,6 +5,7 @@
 declare(strict_types=1);
 namespace App;
 
+
 abstract class Tag
 {
     /**
@@ -105,5 +106,24 @@ abstract class Tag
             $class
         );
         $this->class = $class;
+    }
+
+
+    /**
+     * @return string
+     */
+    protected function makeAttrsOutput(): string
+    {
+        $output = [];
+        array_map(
+            function ($attr) use (&$output) {
+                if (isset($this->$attr)) {
+                    $outputStr =  is_array($this->$attr) ? implode(' ', $this->$attr) : $this->$attr;
+                    $output[] = \sprintf('%s="%s"',$attr, $outputStr);
+                }
+            },
+            $this->attrs
+        );
+        return implode(' ', $output);
     }
 }
