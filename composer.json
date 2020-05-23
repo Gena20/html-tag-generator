@@ -1,5 +1,5 @@
 {
-  "name": "html-tags-generator",
+  "name": "gena20/html-tags-generator",
   "type": "project",
   "require-dev": {
     "phpunit/phpunit": "9.*"
