@@ -3,7 +3,7 @@
 
 namespace App\Tags;
 
-
+use App\InputTag;
 use App\TagInterfaces\IView;
 
 class InputTextTag extends InputTag implements IView

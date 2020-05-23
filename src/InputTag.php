@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tags;
+namespace App;
 
 use App\Tag;
 use App\TagInterfaces\IView;

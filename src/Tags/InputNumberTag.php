@@ -3,7 +3,7 @@
 
 namespace App\Tags;
 
-
+use App\InputTag;
 use App\TagInterfaces\IView;
 
 class InputNumberTag extends InputTag implements IView
