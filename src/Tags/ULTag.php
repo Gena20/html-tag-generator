@@ -36,6 +36,7 @@ class ULTag extends PairTag implements IView
     public function getView(): string
     {
         $attrs = $this->makeAttrsOutput(static::$attrs);
-        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $this->content ?? '', static::TAG_NAME);
+        $content = isset($this->content) ? $this->getContent() : '';
+        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $content, static::TAG_NAME);
     }
 }

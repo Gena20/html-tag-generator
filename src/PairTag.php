@@ -33,7 +33,7 @@ class PairTag extends Tag
      */
     public function getContent(): string
     {
-        return $this->content;
+        return htmlspecialchars($this->content);
     }
 
     /**
