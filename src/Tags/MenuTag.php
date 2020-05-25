@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace App\Tags;
 
 use App\PairTag;
-use App\TagInterfaces\IView;
 use App\TagTraits\TypeAttribute;
 
 
-class MenuTag extends PairTag implements IView
+class MenuTag extends PairTag
 {
     use TypeAttribute;
 
@@ -54,15 +53,5 @@ class MenuTag extends PairTag implements IView
     public function setLabel(string $label): void
     {
         $this->label = $label;
-    }
-
-    /**
-     * @return string
-     */
-    public function getView(): string
-    {
-        $attrs = $this->makeAttrsOutput();
-        $content = isset($this->content) ? $this->getContent() : '';
-        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $content, static::TAG_NAME);
     }
 }

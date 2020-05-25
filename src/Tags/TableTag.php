@@ -6,11 +6,10 @@ namespace App\Tags;
 
 
 use App\PairTag;
-use App\TagInterfaces\IView;
 use App\TagTraits\AlignAttribute;
 
 
-class TableTag extends PairTag implements IView
+class TableTag extends PairTag
 {
     use AlignAttribute;
 
@@ -155,15 +154,5 @@ class TableTag extends PairTag implements IView
     public function setWidth(int $width): void
     {
         $this->width = $width;
-    }
-
-    /**
-     * @return string
-     */
-    public function getView(): string
-    {
-        $attrs = $this->makeAttrsOutput();
-        $content = isset($this->content) ? $this->getContent() : '';
-        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $content, static::TAG_NAME);
     }
 }

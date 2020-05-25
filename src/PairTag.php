@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App;
 
 
-use App\TagInterfaces\IView;
+use App\TagInterfaces\IViewer;
 
 
-class PairTag extends Tag
+class PairTag extends Tag implements IViewer
 {
     /**
      * @var string
@@ -43,4 +43,13 @@ class PairTag extends Tag
         $this->content = $content;
     }
 
+    /**
+     * @return string
+     */
+    public function getView(): string
+    {
+        $attrs = $this->makeAttrsOutput();
+        $content = isset($this->content) ? $this->getContent() : '';
+        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $content, static::TAG_NAME);
+    }
 }

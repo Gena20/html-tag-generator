@@ -4,9 +4,9 @@
 namespace App\Tags;
 
 use App\InputTag;
-use App\TagInterfaces\IView;
 
-class InputNumberTag extends InputTag implements IView
+
+class InputNumberTag extends InputTag
 {
     /**
      * @var int
@@ -30,16 +30,6 @@ class InputNumberTag extends InputTag implements IView
         parent::__construct($id, $classes);
         if ($value) $this->setValue($value);
         $this->type = "number";
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getView(): string
-    {
-        $attrs = $this->makeAttrsOutput();
-        return \sprintf('<%s %s>', static::TAG_NAME, $attrs);
     }
 
     /**
@@ -89,6 +79,4 @@ class InputNumberTag extends InputTag implements IView
     {
         $this->min = $min;
     }
-
-
 }

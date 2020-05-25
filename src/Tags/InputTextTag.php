@@ -4,9 +4,8 @@
 namespace App\Tags;
 
 use App\InputTag;
-use App\TagInterfaces\IView;
 
-class InputTextTag extends InputTag implements IView
+class InputTextTag extends InputTag
 {
     /**
      * @var string
@@ -99,15 +98,5 @@ class InputTextTag extends InputTag implements IView
     public function setSize(int $size): void
     {
         $this->size = $size;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getView(): string
-    {
-        $attrs = $this->makeAttrsOutput();
-        return \sprintf('<%s %s>', static::TAG_NAME, $attrs);
     }
 }

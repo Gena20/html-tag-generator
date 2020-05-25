@@ -6,10 +6,9 @@ namespace App\Tags;
 
 
 use App\PairTag;
-use App\TagInterfaces\IView;
 
 
-class LITag extends PairTag implements IView
+class LITag extends PairTag
 {
     protected const TAG_NAME = 'li';
 
@@ -71,16 +70,4 @@ class LITag extends PairTag implements IView
     {
         $this->type = $type;
     }
-
-
-    /**
-     * @return string
-     */
-    public function getView(): string
-    {
-        $attrs = $this->makeAttrsOutput();
-        $content = isset($this->content) ? $this->getContent() : '';
-        return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $content, static::TAG_NAME);
-    }
-
 }

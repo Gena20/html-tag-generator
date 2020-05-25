@@ -4,10 +4,10 @@
 namespace App;
 
 use App\Tag;
-use App\TagInterfaces\IView;
+use App\TagInterfaces\IViewer;
 
 
-class InputTag extends Tag
+class InputTag extends Tag implements IViewer
 {
     protected const TAG_NAME = 'input';
 
@@ -137,4 +137,12 @@ class InputTag extends Tag
     }
 
 
+    /**
+     * @return string
+     */
+    public function getView(): string
+    {
+        $attrs = $this->makeAttrsOutput();
+        return \sprintf('<%s %s>', static::TAG_NAME, $attrs);
+    }
 }

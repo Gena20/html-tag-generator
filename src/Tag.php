@@ -7,6 +7,9 @@ namespace App;
 
 abstract class Tag
 {
+    /**
+     * @var array|string[]
+     */
     protected array $attrs = ['class', 'id', 'hidden', 'title'];
 
     /**

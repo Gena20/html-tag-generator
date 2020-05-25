@@ -6,7 +6,7 @@ namespace App\TagInterfaces;
 /**
  * Interface IView
  */
-interface IView
+interface IViewer
 {
     /**
      * Output html tag
