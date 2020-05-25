@@ -34,6 +34,12 @@ class ULTag extends PairTag
         $this->list = [];
     }
 
+    /**
+     * @param string $id
+     * @param array $class
+     * @param string $type
+     * @param string ...$contentOfElems
+     */
     public function setList($id='', $class=[], $type='', string ...$contentOfElems): void
     {
         $this->list = [];
@@ -42,12 +48,15 @@ class ULTag extends PairTag
         }
     }
 
+    /**
+     * @return string
+     */
     public function getContent(): string
     {
         $liTags = [];
         foreach ($this->list as $liTag) {
             $liTags[] = $liTag->getView();
         }
-        return implode(PHP_EOL, $liTags);
+        return htmlspecialchars(implode(PHP_EOL, $liTags));
     }
 }

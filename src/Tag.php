@@ -113,16 +113,16 @@ abstract class Tag
      */
     protected function makeAttrsOutput(): string
     {
-        $output = [];
+        $attrsOutput = [];
         array_map(
-            function ($attr) use (&$output) {
+            function ($attr) use (&$attrsOutput) {
                 if (isset($this->$attr) && $this->$attr) {
-                    $outputStr =  is_array($this->$attr) ? implode(' ', $this->$attr) : $this->$attr;
-                    $output[] = \sprintf('%s="%s"',$attr, $outputStr);
+                    $outputStr = is_array($this->$attr) ? implode(' ', $this->$attr) : $this->$attr;
+                    $attrsOutput[] = \sprintf('%s="%s"',$attr, $outputStr);
                 }
             },
             $this->attrs
         );
-        return implode(' ', $output);
+        return implode(' ', $attrsOutput);
     }
 }

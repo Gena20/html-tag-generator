@@ -16,7 +16,6 @@ class MenuTag extends PairTag
     protected const TYPE = ['context', 'toolbar', 'list'];
 
 
-
     /**
      * @var string
      */

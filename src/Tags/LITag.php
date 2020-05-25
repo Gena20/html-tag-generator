@@ -13,7 +13,6 @@ class LITag extends PairTag
 {
     use TypeAttribute;
 
-
     protected const TAG_NAME = 'li';
     protected const TYPE = ['A', 'a', 'I', 'i', '1', 'disc', 'circle', 'square'];
 
