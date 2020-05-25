@@ -8,7 +8,7 @@ namespace App;
 use App\TagInterfaces\IViewer;
 
 
-class PairTag extends Tag implements IViewer
+abstract class PairTag extends Tag implements IViewer
 {
     /**
      * @var string

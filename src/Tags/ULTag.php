@@ -32,6 +32,7 @@ class ULTag extends PairTag
         $this->attrs = array_merge($this->attrs,  ['type']);
         parent::__construct($id, $classes);
         $this->list = [];
+        $this->content='';
     }
 
     /**
@@ -44,7 +45,7 @@ class ULTag extends PairTag
     {
         $this->list = [];
         foreach ($contentOfElems as $contentOfElem) {
-            $this->list[] = (new LITag($id, $class, $type))->setContent($contentOfElem);
+            $this->list[] = (new LITag($id, $class, $type))->setContent(htmlspecialchars($contentOfElem));
         }
     }
 
@@ -57,6 +58,6 @@ class ULTag extends PairTag
         foreach ($this->list as $liTag) {
             $liTags[] = $liTag->getView();
         }
-        return htmlspecialchars(implode(PHP_EOL, $liTags));
+        return implode(PHP_EOL, $liTags);
     }
 }

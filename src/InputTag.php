@@ -7,7 +7,7 @@ use App\Tag;
 use App\TagInterfaces\IViewer;
 
 
-class InputTag extends Tag implements IViewer
+abstract class InputTag extends Tag implements IViewer
 {
     protected const TAG_NAME = 'input';
 

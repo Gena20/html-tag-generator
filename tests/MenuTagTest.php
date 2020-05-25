@@ -10,71 +10,71 @@ class MenuTagTest extends TestCase
     /**
      * @var MenuTag
      */
-    protected MenuTag $ul;
+    protected MenuTag $menu;
 
     protected function setUp(): void
     {
-        $this->ul = new MenuTag;
+        $this->menu = new MenuTag;
     }
 
     public function testEmptyTag()
     {
-        $this->assertSame($this->ul->getView(), '<menu ></menu>');
+        $this->assertSame($this->menu->getView(), '<menu ></menu>');
     }
 
     public function testSetId()
     {
-        $this->ul->setId("ul-tag");
-        $this->assertSame($this->ul->getView(), '<menu id="ul-tag"></menu>');
+        $this->menu->setId("ul-tag");
+        $this->assertSame($this->menu->getView(), '<menu id="ul-tag"></menu>');
     }
 
     public function testSetInvalidId()
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->ul->setId("1ul-tag");
+        $this->menu->setId("1ul-tag");
     }
 
     public function testSetClass()
     {
-        $this->ul->setClass(['first', '2second']);
-        $this->assertSame($this->ul->getView(), '<menu class="first 2second"></menu>');
+        $this->menu->setClass(['first', '2second']);
+        $this->assertSame($this->menu->getView(), '<menu class="first 2second"></menu>');
     }
 
     public function testSetInvalidClass()
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->ul->setClass(['первый', '2second']);
+        $this->menu->setClass(['первый', '2second']);
     }
 
     public function testSetType()
     {
-        $this->ul->setType('list');
-        $this->assertSame($this->ul->getView(), '<menu type="list"></menu>');
+        $this->menu->setType('list');
+        $this->assertSame($this->menu->getView(), '<menu type="list"></menu>');
     }
 
     public function testSetInvalidType()
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->ul->setType('list1');
+        $this->menu->setType('list1');
     }
 
     public function testSetLabel()
     {
-        $this->ul->setLabel("someLabel");
-        $this->assertSame($this->ul->getView(), '<menu label="someLabel"></menu>');
+        $this->menu->setLabel("someLabel");
+        $this->assertSame($this->menu->getView(), '<menu label="someLabel"></menu>');
     }
 
     public function testSetContent()
     {
-        $this->ul->setContent('<someContent>');
-        $this->assertSame($this->ul->getView(), '<menu >&lt;someContent&gt;</menu>');
+        $this->menu->setContent('<someContent>');
+        $this->assertSame($this->menu->getView(), '<menu >&lt;someContent&gt;</menu>');
     }
 
     public function testConstructor()
     {
-        $this->ul = new MenuTag('id', ['class']);
-        $this->assertSame($this->ul->getView(), '<menu class="class" id="id"></menu>');
-        return $this->ul;
+        $this->menu = new MenuTag('id', ['class']);
+        $this->assertSame($this->menu->getView(), '<menu class="class" id="id"></menu>');
+        return $this->menu;
     }
 
     /**
