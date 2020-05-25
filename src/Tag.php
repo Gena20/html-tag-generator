@@ -116,7 +116,7 @@ abstract class Tag
         $attrsOutput = [];
         array_map(
             function ($attr) use (&$attrsOutput) {
-                if (isset($this->$attr) && $this->$attr) {
+                if (isset($this->$attr)) {
                     $outputStr = is_array($this->$attr) ? implode(' ', $this->$attr) : $this->$attr;
                     $attrsOutput[] = \sprintf('%s="%s"',$attr, $outputStr);
                 }

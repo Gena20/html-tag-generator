@@ -45,6 +45,9 @@ class InputNumberTag extends InputTag
      */
     public function setValue(int $value): void
     {
+        if (isset($this->min) && $value < $this->min ||
+            isset($this->max) && $value > $this->max)
+            throw new \InvalidArgumentException('Argument "value" out of max or min');
         $this->value = $value;
     }
 
