@@ -15,6 +15,11 @@ class ULTag extends PairTag
     protected const TAG_NAME = 'ul';
     protected const TYPE = ['disc', 'circle', 'square'];
 
+    /**
+     * @var array|LITag[]
+     */
+    protected array $list;
+
 
     /**
      * ULTag constructor.
@@ -26,5 +31,23 @@ class ULTag extends PairTag
     {
         $this->attrs = array_merge($this->attrs,  ['type']);
         parent::__construct($id, $classes);
+        $this->list = [];
+    }
+
+    public function setList($id='', $class=[], $type='', string ...$contentOfElems): void
+    {
+        $this->list = [];
+        foreach ($contentOfElems as $contentOfElem) {
+            $this->list[] = (new LITag($id, $class, $type))->setContent($contentOfElem);
+        }
+    }
+
+    public function getContent(): string
+    {
+        $liTags = [];
+        foreach ($this->list as $liTag) {
+            $liTags[] = $liTag->getView();
+        }
+        return implode(PHP_EOL, $liTags);
     }
 }

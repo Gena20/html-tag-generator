@@ -6,17 +6,16 @@ namespace App\Tags;
 
 
 use App\PairTag;
+use App\TagTraits\TypeAttribute;
 
 
 class LITag extends PairTag
 {
+    use TypeAttribute;
+
+
     protected const TAG_NAME = 'li';
-
-
-    /**
-     * @var string
-     */
-    protected string $type;
+    protected const TYPE = ['A', 'a', 'I', 'i', '1', 'disc', 'circle', 'square'];
 
     /**
      * @var int
@@ -53,21 +52,5 @@ class LITag extends PairTag
     public function setValue(int $value): void
     {
         $this->value = $value;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    public function setType(string $type): void
-    {
-        $this->type = $type;
     }
 }

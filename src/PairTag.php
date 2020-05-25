@@ -37,10 +37,12 @@ class PairTag extends Tag implements IViewer
 
     /**
      * @param string $content
+     * @return $this
      */
-    public function setContent(string $content): void
+    public function setContent(string $content): PairTag
     {
         $this->content = $content;
+        return $this;
     }
 
     /**
