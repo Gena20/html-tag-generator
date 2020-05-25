@@ -11,8 +11,6 @@ class InputTag extends Tag
 {
     protected const TAG_NAME = 'input';
 
-    protected static array $inputAttrs = ['class', 'id', 'hidden', 'title',
-        'name', 'disabled', 'form', 'required', 'readonly', 'type'];
 
     /**
      * @var string
@@ -52,6 +50,7 @@ class InputTag extends Tag
      */
     protected function __construct($id='', $classes=[])
     {
+        $this->attrs = array_merge($this->attrs, ['name', 'disabled', 'form', 'required', 'readonly', 'type']);
         if ($id) $this->setId($id);
         if ($classes) $this->setClass($classes);
     }

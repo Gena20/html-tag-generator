@@ -13,8 +13,6 @@ class LITag extends PairTag implements IView
 {
     protected const TAG_NAME = 'li';
 
-    protected static array $attrs;
-
 
     /**
      * @var string
@@ -36,7 +34,7 @@ class LITag extends PairTag implements IView
      */
     public function __construct($id='', $classes=[], $type='', $value=1)
     {
-        self::$attrs = array_merge(self::$pairAttrs,  ['type', 'value']);
+        $this->attrs = array_merge($this->attrs,  ['type', 'value']);
         parent::__construct($id, $classes);
         if ($type) $this->setType($type);
         if ($value) $this->setValue($value);
@@ -80,7 +78,7 @@ class LITag extends PairTag implements IView
      */
     public function getView(): string
     {
-        $attrs = $this->makeAttrsOutput(static::$attrs);
+        $attrs = $this->makeAttrsOutput();
         $content = isset($this->content) ? $this->getContent() : '';
         return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $content, static::TAG_NAME);
     }

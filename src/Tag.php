@@ -7,6 +7,8 @@ namespace App;
 
 abstract class Tag
 {
+    protected array $attrs = ['class', 'id', 'hidden', 'title'];
+
     /**
      * @var array|string[]
      */
@@ -104,10 +106,9 @@ abstract class Tag
 
 
     /**
-     * @param array $attrs
      * @return string
      */
-    protected function makeAttrsOutput(array $attrs): string
+    protected function makeAttrsOutput(): string
     {
         $output = [];
         array_map(
@@ -117,7 +118,7 @@ abstract class Tag
                     $output[] = \sprintf('%s="%s"',$attr, $outputStr);
                 }
             },
-            $attrs
+            $this->attrs
         );
         return implode(' ', $output);
     }

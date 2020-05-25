@@ -8,8 +8,6 @@ use App\TagInterfaces\IView;
 
 class InputNumberTag extends InputTag implements IView
 {
-    protected static array $attrs;
-
     /**
      * @var int
      */
@@ -28,7 +26,7 @@ class InputNumberTag extends InputTag implements IView
 
     public function __construct($id='', $classes=[], $value=0)
     {
-        self::$attrs = array_merge(self::$inputAttrs, ['value', 'max', 'min']);
+        $this->attrs = array_merge($this->attrs, ['value', 'max', 'min']);
         parent::__construct($id, $classes);
         if ($value) $this->setValue($value);
         $this->type = "number";
@@ -40,7 +38,7 @@ class InputNumberTag extends InputTag implements IView
      */
     public function getView(): string
     {
-        $attrs = $this->makeAttrsOutput(static::$attrs);
+        $attrs = $this->makeAttrsOutput();
         return \sprintf('<%s %s>', static::TAG_NAME, $attrs);
     }
 

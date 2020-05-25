@@ -17,8 +17,6 @@ class TableTag extends PairTag implements IView
     protected const TAG_NAME = 'table';
     protected const ALIGN_TYPE = ['left', 'center', 'right'];
 
-    protected static array $attrs;
-
 
     /**
      * @var string
@@ -59,7 +57,7 @@ class TableTag extends PairTag implements IView
      */
     public function __construct($id='', $classes=[])
     {
-        self::$attrs = array_merge(self::$pairAttrs,  ['background', 'bgcolor', 'border', 'cols', 'height', 'width']);
+        $this->attrs = array_merge($this->attrs,  ['background', 'bgcolor', 'border', 'cols', 'height', 'width']);
         parent::__construct($id, $classes);
     }
 
@@ -164,7 +162,7 @@ class TableTag extends PairTag implements IView
      */
     public function getView(): string
     {
-        $attrs = $this->makeAttrsOutput(static::$attrs);
+        $attrs = $this->makeAttrsOutput();
         $content = isset($this->content) ? $this->getContent() : '';
         return \sprintf('<%s %s>%s</%s>', static::TAG_NAME, $attrs, $content, static::TAG_NAME);
     }

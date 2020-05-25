@@ -8,9 +8,6 @@ use App\TagInterfaces\IView;
 
 class InputTextTag extends InputTag implements IView
 {
-    protected static array $attrs;
-
-
     /**
      * @var string
      */
@@ -34,7 +31,7 @@ class InputTextTag extends InputTag implements IView
 
     public function __construct($id='', $classes=[], $value='')
     {
-        self::$attrs = array_merge(self::$inputAttrs, ['value', 'maxlength', 'pattern', 'size']);
+        $this->attrs = array_merge($this->attrs, ['value', 'maxlength', 'pattern', 'size']);
         parent::__construct($id, $classes);
         if ($value) $this->setValue($value);
         $this->type = "text";
@@ -110,7 +107,7 @@ class InputTextTag extends InputTag implements IView
      */
     public function getView(): string
     {
-        $attrs = $this->makeAttrsOutput(static::$attrs);
+        $attrs = $this->makeAttrsOutput();
         return \sprintf('<%s %s>', static::TAG_NAME, $attrs);
     }
 }

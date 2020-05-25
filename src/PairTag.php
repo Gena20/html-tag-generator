@@ -15,7 +15,6 @@ class PairTag extends Tag
      */
     protected string $content;
 
-    protected static array $pairAttrs = ['class', 'id', 'hidden', 'title'];
 
     /**
      * PairTag constructor.
