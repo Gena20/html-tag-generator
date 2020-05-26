@@ -39,9 +39,7 @@ class UL extends PairTag
      */
     public function setList(array $LIs): void
     {
-        $this->list = [];
-        foreach ($LIs as $li)
-            $this->list[] = $li;
+        $this->list = $LIs;
     }
 
     /**
@@ -69,7 +67,7 @@ class UL extends PairTag
     {
         $liTags = [];
         foreach ($this->list as $liTag) {
-            $liTags[] = $liTag->getView();
+            $liTags[] = (string)$liTag;
         }
         return implode(PHP_EOL, $liTags);
     }

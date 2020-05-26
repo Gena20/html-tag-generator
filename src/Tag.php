@@ -8,13 +8,6 @@ namespace App;
 abstract class Tag
 {
     /**
-     * Get view of html tag
-     *
-     * @return string
-     */
-    abstract public function getView(): string;
-
-    /**
      * @var array|string[]
      */
     protected array $attrs = ['class', 'id', 'hidden', 'title'];
@@ -123,7 +116,7 @@ abstract class Tag
         $attrsOutput = [];
         array_map(
             function ($attr) use (&$attrsOutput) {
-                if (isset($this->$attr)) {
+                if (isset($this->$attr) && $this->$attr !== false) {
                     $outputStr = is_array($this->$attr) ? implode(' ', $this->$attr) : $this->$attr;
                     $attrsOutput[] = \sprintf('%s="%s"',$attr, $outputStr);
                 }

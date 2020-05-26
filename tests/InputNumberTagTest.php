@@ -19,7 +19,7 @@ class InputNumberTagTest extends TestCase
 
     public function testEmptyTag()
     {
-        $this->assertSame($this->input->getView(), '<input type="number">');
+        $this->assertEquals('<input type="number">', (string)$this->input);
     }
 
     public function testConstructor()
@@ -27,7 +27,7 @@ class InputNumberTagTest extends TestCase
         $this->input = new InputNumber('id', ['class']);
         $this->input->setMin(0);
         $this->input->setMax(10);
-        $this->assertSame($this->input->getView(), '<input class="class" id="id" max="10" min="0" type="number">');
+        $this->assertEquals('<input class="class" id="id" max="10" min="0" type="number">', (string)$this->input);
         return $this->input;
     }
 
@@ -38,7 +38,7 @@ class InputNumberTagTest extends TestCase
     public function testSetValue(InputNumber $input)
     {
         $input->setValue(5);
-        $this->assertSame($input->getView(), '<input class="class" id="id" value="5" max="10" min="0" type="number">');
+        $this->assertEquals('<input class="class" id="id" value="5" max="10" min="0" type="number">', (string)$input);
     }
 
     /**

@@ -20,13 +20,13 @@ class MenuTagTest extends TestCase
 
     public function testEmptyTag()
     {
-        $this->assertSame($this->menu->getView(), '<menu ></menu>');
+        $this->assertEquals('<menu ></menu>', (string)$this->menu);
     }
 
     public function testSetId()
     {
         $this->menu->setId("ul-tag");
-        $this->assertSame($this->menu->getView(), '<menu id="ul-tag"></menu>');
+        $this->assertEquals('<menu id="ul-tag"></menu>', (string)$this->menu);
     }
 
     public function testSetInvalidId()
@@ -38,7 +38,7 @@ class MenuTagTest extends TestCase
     public function testSetClass()
     {
         $this->menu->setClass(['first', '2second']);
-        $this->assertSame($this->menu->getView(), '<menu class="first 2second"></menu>');
+        $this->assertEquals('<menu class="first 2second"></menu>', (string)$this->menu);
     }
 
     public function testSetInvalidClass()
@@ -50,7 +50,7 @@ class MenuTagTest extends TestCase
     public function testSetType()
     {
         $this->menu->setType('list');
-        $this->assertSame($this->menu->getView(), '<menu type="list"></menu>');
+        $this->assertEquals('<menu type="list"></menu>', (string)$this->menu);
     }
 
     public function testSetInvalidType()
@@ -62,19 +62,19 @@ class MenuTagTest extends TestCase
     public function testSetLabel()
     {
         $this->menu->setLabel("someLabel");
-        $this->assertSame($this->menu->getView(), '<menu label="someLabel"></menu>');
+        $this->assertEquals('<menu label="someLabel"></menu>', (string)$this->menu);
     }
 
     public function testSetContent()
     {
         $this->menu->setContent('<someContent>');
-        $this->assertSame($this->menu->getView(), '<menu >&lt;someContent&gt;</menu>');
+        $this->assertEquals('<menu >&lt;someContent&gt;</menu>', (string)$this->menu);
     }
 
     public function testConstructor()
     {
         $this->menu = new Menu('id', ['class']);
-        $this->assertSame($this->menu->getView(), '<menu class="class" id="id"></menu>');
+        $this->assertEquals('<menu class="class" id="id"></menu>', (string)$this->menu);
         return $this->menu;
     }
 
@@ -88,6 +88,6 @@ class MenuTagTest extends TestCase
         $menu->setLabel("label");
         $menu->setHidden(true);
         $menu->setTitle("title");
-        $this->assertSame($menu->getView(), '<menu class="class" id="id" hidden="1" title="title" type="list" label="label"></menu>');
+        $this->assertEquals('<menu class="class" id="id" hidden="1" title="title" type="list" label="label"></menu>', (string)$menu);
     }
 }

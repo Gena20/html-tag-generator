@@ -20,13 +20,13 @@ class ULTagTest extends TestCase
 
     public function testEmptyTag()
     {
-        $this->assertSame($this->ul->getView(), '<ul ></ul>');
+        $this->assertEquals('<ul ></ul>', (string)$this->ul);
     }
 
     public function testSetType()
     {
         $this->ul->setType('circle');
-        $this->assertSame($this->ul->getView(), '<ul type="circle"></ul>');
+        $this->assertEquals('<ul type="circle"></ul>', (string)$this->ul);
     }
 
     public function testSetInvalidType()
@@ -40,8 +40,8 @@ class ULTagTest extends TestCase
     {
         $LIs = [(new LI())->setContent('1'), (new LI())->setContent('2')];
         $this->ul->setList($LIs);
-        $this->assertSame($this->ul->getView(), '<ul ><li >1</li>
-<li >2</li></ul>');
+        $this->assertEquals('<ul ><li >1</li>
+<li >2</li></ul>', (string)$this->ul);
         return $this->ul;
     }
 
@@ -58,6 +58,6 @@ class ULTagTest extends TestCase
     public function testAddLI()
     {
         $this->ul->addLI((new LI())->setContent('1'));
-        $this->assertSame($this->ul->getView(), '<ul ><li >1</li></ul>');
+        $this->assertEquals('<ul ><li >1</li></ul>', (string)$this->ul);
     }
 }

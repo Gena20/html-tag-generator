@@ -5,4 +5,4 @@
 - ul
 - li
 - table
-- input [text, number]
+- input [text, number, password, button, submit, reset, checkbox, radio]

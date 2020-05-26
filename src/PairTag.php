@@ -42,10 +42,13 @@ abstract class PairTag extends Tag
         return $this;
     }
 
+
     /**
+     * Get view of html tag
+     *
      * @return string
      */
-    public function getView(): string
+    public function __toString(): string
     {
         $attrs = $this->makeAttrsOutput();
         $content = isset($this->content) ? $this->getContent() : '';

@@ -135,9 +135,11 @@ abstract class InputTag extends Tag
 
 
     /**
+     * Get view of html tag
+     *
      * @return string
      */
-    public function getView(): string
+    public function __toString(): string
     {
         $attrs = $this->makeAttrsOutput();
         return \sprintf('<%s %s>', static::TAG_NAME, $attrs);
