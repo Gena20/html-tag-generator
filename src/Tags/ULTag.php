@@ -35,17 +35,31 @@ class ULTag extends PairTag
     }
 
     /**
-     * @param string $id
-     * @param array $class
-     * @param string $type
-     * @param string ...$contentOfElems
+     * @param array|LITag[] $LIs
      */
-    public function setList($id='', $class=[], $type='', string ...$contentOfElems): void
+    public function setList(array $LIs): void
     {
         $this->list = [];
-        foreach ($contentOfElems as $contentOfElem) {
-            $this->list[] = (new LITag($id, $class, $type))->setContent(htmlspecialchars($contentOfElem));
-        }
+        foreach ($LIs as $li)
+            $this->list[] = $li;
+    }
+
+    /**
+     * Clear $list
+     */
+    public function clearList()
+    {
+        $this->list = [];
+    }
+
+    /**
+     * @param LITag $li
+     * @return $this
+     */
+    public function addLI(LITag $li)
+    {
+        $this->list[] = $li;
+        return $this;
     }
 
     /**

@@ -36,8 +36,26 @@ class ULTagTest extends TestCase
 
     public function testSetList()
     {
-        $this->ul->setList('id', ['class'], 'disc', '1', '2');
-        $this->assertSame($this->ul->getView(), '<ul ><li class="class" id="id" type="disc" value="1">1</li>
-<li class="class" id="id" type="disc" value="1">2</li></ul>');
+        $LIs = [(new LITag())->setContent('1'), (new LITag())->setContent('2')];
+        $this->ul->setList($LIs);
+        $this->assertSame($this->ul->getView(), '<ul ><li >1</li>
+<li >2</li></ul>');
+        return $this->ul;
+    }
+
+    /**
+     * @depends testSetList
+     * @param ULTag $ul
+     */
+    public function testClearList(ULTag $ul)
+    {
+        $ul->clearList();
+        $this->assertEmpty($ul->getContent());
+    }
+
+    public function testAddLI()
+    {
+        $this->ul->addLI((new LITag())->setContent('1'));
+        $this->assertEquals($this->ul->getView(), '<ul ><li >1</li></ul>');
     }
 }

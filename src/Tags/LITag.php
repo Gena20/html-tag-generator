@@ -28,7 +28,7 @@ class LITag extends PairTag
      * @param string $type
      * @param int $value
      */
-    public function __construct($id='', $classes=[], $type='', $value=1)
+    public function __construct($id='', $classes=[], $type='', $value=0)
     {
         $this->validTypes = ['A', 'a', 'I', 'i', '1', 'disc', 'circle', 'square'];
         $this->attrs = array_merge($this->attrs,  ['type', 'value']);

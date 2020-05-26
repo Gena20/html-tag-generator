@@ -79,14 +79,14 @@ class MenuTagTest extends TestCase
 
     /**
      * @depends testConstructor
-     * @param MenuTag $ul
+     * @param MenuTag $menu
      */
-    public function testAllAttributes(MenuTag $ul)
+    public function testAllAttributes(MenuTag $menu)
     {
-        $ul->setType("list");
-        $ul->setLabel("label");
-        $ul->setHidden(true);
-        $ul->setTitle("title");
-        $this->assertSame($ul->getView(), '<menu class="class" id="id" hidden="1" title="title" type="list" label="label"></menu>');
+        $menu->setType("list");
+        $menu->setLabel("label");
+        $menu->setHidden(true);
+        $menu->setTitle("title");
+        $this->assertSame($menu->getView(), '<menu class="class" id="id" hidden="1" title="title" type="list" label="label"></menu>');
     }
 }
