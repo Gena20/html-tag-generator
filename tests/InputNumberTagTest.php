@@ -3,17 +3,18 @@
 namespace App\Tags;
 
 use PHPUnit\Framework\TestCase;
+use App\InputTags\InputNumber;
 
 class InputNumberTagTest extends TestCase
 {
     /**
-     * @var InputNumberTag
+     * @var InputNumber
      */
-    protected InputNumberTag $input;
+    protected InputNumber $input;
 
     protected function setUp(): void
     {
-        $this->input = new InputNumberTag;
+        $this->input = new InputNumber;
     }
 
     public function testEmptyTag()
@@ -23,7 +24,7 @@ class InputNumberTagTest extends TestCase
 
     public function testConstructor()
     {
-        $this->input = new InputNumberTag('id', ['class']);
+        $this->input = new InputNumber('id', ['class']);
         $this->input->setMin(0);
         $this->input->setMax(10);
         $this->assertSame($this->input->getView(), '<input class="class" id="id" max="10" min="0" type="number">');
@@ -32,9 +33,9 @@ class InputNumberTagTest extends TestCase
 
     /**
      * @depends testConstructor
-     * @param InputNumberTag $input
+     * @param InputNumber $input
      */
-    public function testSetValue(InputNumberTag $input)
+    public function testSetValue(InputNumber $input)
     {
         $input->setValue(5);
         $this->assertSame($input->getView(), '<input class="class" id="id" value="5" max="10" min="0" type="number">');
@@ -42,9 +43,9 @@ class InputNumberTagTest extends TestCase
 
     /**
      * @depends testConstructor
-     * @param InputNumberTag $input
+     * @param InputNumber $input
      */
-    public function testSetInvalidValue(InputNumberTag $input)
+    public function testSetInvalidValue(InputNumber $input)
     {
         $this->expectException(\InvalidArgumentException::class);
         $input->setValue(11);

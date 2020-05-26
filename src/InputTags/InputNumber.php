@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Tags;
+namespace App\InputTags;
 
 use App\InputTag;
 
 
-class InputNumberTag extends InputTag
+class InputNumber extends InputTag
 {
     /**
      * @var int

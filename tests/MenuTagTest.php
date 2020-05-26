@@ -4,17 +4,18 @@ namespace App\Tags;
 
 
 use PHPUnit\Framework\TestCase;
+use App\PairTags\Menu;
 
 class MenuTagTest extends TestCase
 {
     /**
-     * @var MenuTag
+     * @var Menu
      */
-    protected MenuTag $menu;
+    protected Menu $menu;
 
     protected function setUp(): void
     {
-        $this->menu = new MenuTag;
+        $this->menu = new Menu;
     }
 
     public function testEmptyTag()
@@ -72,16 +73,16 @@ class MenuTagTest extends TestCase
 
     public function testConstructor()
     {
-        $this->menu = new MenuTag('id', ['class']);
+        $this->menu = new Menu('id', ['class']);
         $this->assertSame($this->menu->getView(), '<menu class="class" id="id"></menu>');
         return $this->menu;
     }
 
     /**
      * @depends testConstructor
-     * @param MenuTag $menu
+     * @param Menu $menu
      */
-    public function testAllAttributes(MenuTag $menu)
+    public function testAllAttributes(Menu $menu)
     {
         $menu->setType("list");
         $menu->setLabel("label");

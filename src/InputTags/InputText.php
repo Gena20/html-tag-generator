@@ -1,16 +1,15 @@
 <?php
 
 
-namespace App\Tags;
+namespace App\InputTags;
 
 use App\InputTag;
+use App\TagTraits\StringValueAttribute;
 
-class InputTextTag extends InputTag
+class InputText extends InputTag
 {
-    /**
-     * @var string
-     */
-    protected string $value;
+    use StringValueAttribute;
+
 
     /**
      * @var int
@@ -36,21 +35,6 @@ class InputTextTag extends InputTag
         $this->type = "text";
     }
 
-    /**
-     * @return string
-     */
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setValue(string $value): void
-    {
-        $this->value = $value;
-    }
 
     /**
      * @return int

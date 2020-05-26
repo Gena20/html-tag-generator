@@ -2,14 +2,14 @@
 
 
 declare(strict_types=1);
-namespace App\Tags;
+namespace App\PairTags;
 
 
 use App\PairTag;
 use App\TagTraits\AlignAttribute;
 
 
-class TableTag extends PairTag
+class Table extends PairTag
 {
     use AlignAttribute;
 

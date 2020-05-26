@@ -2,13 +2,13 @@
 
 
 declare(strict_types=1);
-namespace App\Tags;
+namespace App\PairTags;
 
 use App\PairTag;
 use App\TagTraits\TypeAttribute;
 
 
-class MenuTag extends PairTag
+class Menu extends PairTag
 {
     use TypeAttribute;
 
@@ -22,7 +22,7 @@ class MenuTag extends PairTag
 
 
     /**
-     * MenuTag constructor.
+     * Menu constructor.
      *
      * @param string $id
      * @param array $classes

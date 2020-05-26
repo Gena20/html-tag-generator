@@ -2,14 +2,14 @@
 
 
 declare(strict_types=1);
-namespace App\Tags;
+namespace App\PairTags;
 
 
 use App\PairTag;
 use App\TagTraits\TypeAttribute;
 
 
-class LITag extends PairTag
+class LI extends PairTag
 {
     use TypeAttribute;
 

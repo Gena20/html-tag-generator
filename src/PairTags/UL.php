@@ -2,20 +2,20 @@
 
 
 declare(strict_types=1);
-namespace App\Tags;
+namespace App\PairTags;
 
 use App\PairTag;
 use App\TagTraits\TypeAttribute;
 
 
-class ULTag extends PairTag
+class UL extends PairTag
 {
     use TypeAttribute;
 
     protected const TAG_NAME = 'ul';
 
     /**
-     * @var array|LITag[]
+     * @var array|LI[]
      */
     protected array $list = [];
 
@@ -35,7 +35,7 @@ class ULTag extends PairTag
     }
 
     /**
-     * @param array|LITag[] $LIs
+     * @param array|LI[] $LIs
      */
     public function setList(array $LIs): void
     {
@@ -53,10 +53,10 @@ class ULTag extends PairTag
     }
 
     /**
-     * @param LITag $li
+     * @param LI $li
      * @return $this
      */
-    public function addLI(LITag $li)
+    public function addLI(LI $li)
     {
         $this->list[] = $li;
         return $this;
