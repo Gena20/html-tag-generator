@@ -12,6 +12,11 @@ trait TypeAttribute
      */
     protected string $type;
 
+    /**
+     * @var array|string[]
+     */
+    protected array $validTypes;
+
 
     /**
      * @return string
@@ -26,9 +31,9 @@ trait TypeAttribute
      */
     public function setType(string $type): void
     {
-        if (!in_array($type, static::TYPE)) {
+        if (!in_array($type, $this->validTypes)) {
             throw new \InvalidArgumentException(
-                'Argument must be one of: '.implode(', ', static::TYPE)
+                'Argument must be one of: '.implode(', ', $this->validTypes)
             );
         }
         $this->type = $type;

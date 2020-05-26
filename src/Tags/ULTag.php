@@ -13,12 +13,11 @@ class ULTag extends PairTag
     use TypeAttribute;
 
     protected const TAG_NAME = 'ul';
-    protected const TYPE = ['disc', 'circle', 'square'];
 
     /**
      * @var array|LITag[]
      */
-    protected array $list;
+    protected array $list = [];
 
 
     /**
@@ -29,10 +28,10 @@ class ULTag extends PairTag
      */
     public function __construct($id='', $classes=[])
     {
+        $this->validTypes = ['disc', 'circle', 'square'];
         $this->attrs = array_merge($this->attrs,  ['type']);
         parent::__construct($id, $classes);
-        $this->list = [];
-        $this->content='';
+        $this->content = '';
     }
 
     /**

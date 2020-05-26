@@ -13,7 +13,6 @@ class MenuTag extends PairTag
     use TypeAttribute;
 
     protected const TAG_NAME = 'menu';
-    protected const TYPE = ['context', 'toolbar', 'list'];
 
 
     /**
@@ -32,6 +31,7 @@ class MenuTag extends PairTag
      */
     public function __construct($id='', $classes=[], $type = '', $label = '')
     {
+        $this->validTypes = ['context', 'toolbar', 'list'];
         $this->attrs = array_merge($this->attrs, ['type', 'label']);
         parent::__construct($id, $classes);
         if ($type) $this->setType($type);

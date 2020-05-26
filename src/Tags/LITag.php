@@ -14,7 +14,6 @@ class LITag extends PairTag
     use TypeAttribute;
 
     protected const TAG_NAME = 'li';
-    protected const TYPE = ['A', 'a', 'I', 'i', '1', 'disc', 'circle', 'square'];
 
     /**
      * @var int
@@ -31,6 +30,7 @@ class LITag extends PairTag
      */
     public function __construct($id='', $classes=[], $type='', $value=1)
     {
+        $this->validTypes = ['A', 'a', 'I', 'i', '1', 'disc', 'circle', 'square'];
         $this->attrs = array_merge($this->attrs,  ['type', 'value']);
         parent::__construct($id, $classes);
         if ($type) $this->setType($type);
