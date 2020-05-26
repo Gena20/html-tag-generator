@@ -12,25 +12,27 @@ trait AlignAttribute
      */
     protected string $alignType;
 
+    protected array $validAlignTypes = ['left', 'center', 'right'];
+
 
     /**
      * @return string
      */
-    public function getType(): string
+    public function getAlignType(): string
     {
-        return $this->type;
+        return $this->alignType;
     }
 
     /**
-     * @param string $type
+     * @param string $alignType
      */
-    public function setType(string $type): void
+    public function setAlignType(string $alignType): void
     {
-        if (!in_array($type, static::ALIGN_TYPE)) {
+        if (!in_array($alignType, $this->validAlignTypes)) {
             throw new \InvalidArgumentException(
-                'Argument must be one of: '.implode(', ', static::ALIGN_TYPE)
+                'Argument must be one of: '.implode(', ', $this->validAlignTypes)
             );
         }
-        $this->type = $type;
+        $this->alignType = $alignType;
     }
 }

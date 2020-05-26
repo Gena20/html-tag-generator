@@ -14,7 +14,6 @@ class TableTag extends PairTag
     use AlignAttribute;
 
     protected const TAG_NAME = 'table';
-    protected const ALIGN_TYPE = ['left', 'center', 'right'];
 
 
     /**
