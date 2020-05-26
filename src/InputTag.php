@@ -3,11 +3,8 @@
 
 namespace App;
 
-use App\Tag;
-use App\TagInterfaces\IViewer;
 
-
-abstract class InputTag extends Tag implements IViewer
+abstract class InputTag extends Tag
 {
     protected const TAG_NAME = 'input';
 

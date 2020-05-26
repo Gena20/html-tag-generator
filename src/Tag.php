@@ -8,6 +8,13 @@ namespace App;
 abstract class Tag
 {
     /**
+     * Get view of html tag
+     *
+     * @return string
+     */
+    abstract public function getView(): string;
+
+    /**
      * @var array|string[]
      */
     protected array $attrs = ['class', 'id', 'hidden', 'title'];

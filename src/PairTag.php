@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 
-use App\TagInterfaces\IViewer;
-
-
-abstract class PairTag extends Tag implements IViewer
+abstract class PairTag extends Tag
 {
     /**
      * @var string
